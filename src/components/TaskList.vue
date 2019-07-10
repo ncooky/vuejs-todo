@@ -1,7 +1,7 @@
 <template>
   <div class="task-list">
     <div class="task-items" v-if="tasks && tasks.length">
-      <TaskItem v-for="task in tasks" :key="task.id" :task-content="task.content" :is-completed="task.isCompleted" />
+      <TaskItem v-for="task in tasks" :key="task.id" :task-id="task.id" :task-content="task.content" :is-completed="task.isCompleted" />
     </div>
     <div class="empty-message" v-else>{{ emptyMessage || 'No tasks' }}</div>
   </div>
