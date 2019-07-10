@@ -14,10 +14,10 @@ export default {
     isCompleted: Boolean,
   },
   computed: {
-    taskIdWithPrefix: function() {
+    taskIdWithPrefix() {
       return `task-${this.taskId}`;
-    }
-  }
+    },
+  },
 };
 </script>
 

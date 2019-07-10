@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import TodoTasks from './views/TodoTasks.vue';
+import CompletedTasks from './views/CompletedTasks.vue';
 
 Vue.use(Router);
 
@@ -10,16 +11,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'todo-tasks',
+      component: TodoTasks,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      path: '/completed',
+      name: 'completed-tasks',
+      component: CompletedTasks,
     },
   ],
 });
