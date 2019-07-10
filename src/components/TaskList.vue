@@ -26,5 +26,19 @@ export default {
 
 <style scoped lang="scss">
 .task-list {
+  max-width: 500px;
+  margin: auto;
+  padding: 50px 30px 30px;
+  text-align: left;
+  .task-items {
+    .task-item {
+      & + .task-item {
+        border-top: 1px solid #eee;
+      }
+    }
+  }
+  .empty-message {
+    text-align: center;
+  }
 }
 </style>

@@ -8,8 +8,16 @@ export default new Vuex.Store({
     tasks: {
       todo: [{
         id: '1',
-        content: 'It\'s the content of the task',
-        isCompleted: true,
+        content: 'Buy mike',
+        isCompleted: false,
+      }, {
+        id: '2',
+        content: 'Reply to Tom',
+        isCompleted: false,
+      }, {
+        id: '3',
+        content: 'Follow up app crash error',
+        isCompleted: false,
       }],
       completed: [],
     },
