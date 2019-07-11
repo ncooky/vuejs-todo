@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import uuidv4 from 'uuid/v4';
 
 import actionTypes from './action-types';
 import mutationTypes from './mutation-types';
@@ -9,19 +10,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     tasks: {
-      todo: [{
-        id: '1',
-        content: 'Buy mike',
-        isCompleted: false,
-      }, {
-        id: '2',
-        content: 'Reply to Tom',
-        isCompleted: false,
-      }, {
-        id: '3',
-        content: 'Follow up app crash error',
-        isCompleted: false,
-      }],
+      todo: [],
       completed: [],
     },
   },
@@ -38,12 +27,24 @@ const store = new Vuex.Store({
       state.tasks.completed = state.tasks.completed.filter(task => (task.id !== taskId));
       state.tasks.todo.unshift(targetTask);
     },
+    [mutationTypes.ADD_NEW_TASK_TO_LIST](state, { taskContent }) {
+      const newTask = {
+        id: uuidv4(),
+        content: taskContent,
+        isCompleted: false,
+      };
+      console.log('New task created', newTask);
+      state.tasks.todo.unshift(newTask);
+    },
   },
   actions: {
     [actionTypes.TOGGLE_TASK_IS_COMPLETED]({ commit }, { taskId, isCompleted }) {
       const tagetMutationType = isCompleted ? mutationTypes.UNDO_COMPLETED_TASK
         : mutationTypes.MARK_TASK_TO_COMPLETED;
       commit(tagetMutationType, { taskId });
+    },
+    [actionTypes.ADD_NEW_TASK]({ commit }, { taskContent }) {
+      commit(mutationTypes.ADD_NEW_TASK_TO_LIST, { taskContent });
     },
   },
 });

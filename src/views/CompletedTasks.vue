@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="completed-tasks-page">
     <TaskList task-list-id="completed" empty-message="Carry on! No completed tasks yet." :tasks="completedTodoItems" />
   </div>
 </template>

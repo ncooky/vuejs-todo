@@ -28,7 +28,7 @@ export default {
 .task-list {
   max-width: 500px;
   margin: auto;
-  padding: 50px 30px 30px;
+  padding: 30px;
   text-align: left;
   .task-items {
     .task-item {

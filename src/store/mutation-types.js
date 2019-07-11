@@ -1,6 +1,7 @@
 const mutationTypes = {
   MARK_TASK_TO_COMPLETED: 'MARK_TASK_TO_COMPLETED',
   UNDO_COMPLETED_TASK: 'UNDO_COMPLETED_TASK',
+  ADD_NEW_TASK_TO_LIST: 'ADD_NEW_TASK_TO_LIST',
 };
 
 export default mutationTypes;
