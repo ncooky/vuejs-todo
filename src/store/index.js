@@ -15,6 +15,10 @@ const store = new Vuex.Store({
       completed: [],
     },
   },
+  getters: {
+    todoTasksCount: state => state.tasks.todo.length,
+    completedTasksCount: state => state.tasks.completed.length,
+  },
   mutations: {
     [mutationTypes.MARK_TASK_TO_COMPLETED](state, { taskId }) {
       const targetTask = state.tasks.todo.find(task => (task.id === taskId));

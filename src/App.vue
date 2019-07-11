@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">TODO</router-link> |
-      <router-link to="/completed">Completed</router-link>
+      <router-link to="/">TODO {{`(${todoCount})`}}</router-link> |
+      <router-link to="/completed">Completed {{`(${completedCount})`}}</router-link>
     </div>
     <router-view/>
   </div>
@@ -16,6 +16,14 @@ export default {
   beforeCreate () {
     this.$store.dispatch(actionTypes.LOAD_TASKS_FROM_LOCAL_STORAGE);
   },
+  computed: {
+    todoCount() {
+      return this.$store.getters.todoTasksCount;
+    },
+    completedCount() {
+      return this.$store.getters.completedTasksCount;
+    },
+  }
 };
 </script>
 
