@@ -34,5 +34,12 @@ export default {
 
 <style scoped lang="scss">
 .task-item {
+  padding: 5px 0;
+  .content {
+    font-size: 16px;
+    line-height: 1.3;
+    display: inline-block;
+    margin-left: 10px;
+  }
 }
 </style>
