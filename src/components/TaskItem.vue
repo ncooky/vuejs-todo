@@ -1,7 +1,7 @@
 <template>
   <div class="task-item">
-    <input type="checkbox" :id="taskIdWithPrefix" :checked="isCompleted" @change="toggleIsCompleted" />
-    <label class="content" :for="taskIdWithPrefix">{{ taskContent }}</label>
+    <input class="task-checkbox" type="checkbox" :id="taskIdWithPrefix" :checked="isCompleted" @change="toggleIsCompleted" />
+    <label class="task-content" :for="taskIdWithPrefix">{{ taskContent }}</label>
   </div>
 </template>
 
@@ -35,7 +35,10 @@ export default {
 <style scoped lang="scss">
 .task-item {
   padding: 5px 0;
-  .content {
+  .task-checkbox {
+
+  }
+  .task-content {
     font-size: 16px;
     line-height: 1.3;
     display: inline-block;
