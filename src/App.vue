@@ -8,6 +8,17 @@
   </div>
 </template>
 
+<script>
+import actionTypes from '@/store/action-types'
+
+export default {
+  name: 'app',
+  beforeCreate () {
+    this.$store.dispatch(actionTypes.LOAD_TASKS_FROM_LOCAL_STORAGE);
+  },
+};
+</script>
+
 <style lang="scss">
 @import 'reset-css';
 

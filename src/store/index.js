@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import uuidv4 from 'uuid/v4';
+import localStorage from 'local-storage';
 
 import actionTypes from './action-types';
 import mutationTypes from './mutation-types';
@@ -35,6 +36,10 @@ const store = new Vuex.Store({
       };
       console.log('New task created', newTask);
       state.tasks.todo.unshift(newTask);
+      localStorage.set('todo-tasks', JSON.stringify(state.tasks.todo));
+    },
+    [mutationTypes.UPDATE_TASK_LIST](state, { taskListKey, taskList }) {
+      state.tasks[taskListKey] = taskList;
     },
   },
   actions: {
@@ -45,6 +50,20 @@ const store = new Vuex.Store({
     },
     [actionTypes.ADD_NEW_TASK]({ commit }, { taskContent }) {
       commit(mutationTypes.ADD_NEW_TASK_TO_LIST, { taskContent });
+    },
+    [actionTypes.LOAD_TASKS_FROM_LOCAL_STORAGE]({ commit }) {
+      const todoTasksJson = localStorage.get('todo-tasks');
+      const todoList = JSON.parse(todoTasksJson) || [];
+      const completedTasksJson = localStorage.get('completed-tasks');
+      const completedTasks = JSON.parse(completedTasksJson) || [];
+      commit(mutationTypes.UPDATE_TASK_LIST, {
+        taskListKey: 'todo',
+        taskList: todoList,
+      });
+      commit(mutationTypes.UPDATE_TASK_LIST, {
+        taskListKey: 'completed',
+        taskList: completedTasks,
+      });
     },
   },
 });
