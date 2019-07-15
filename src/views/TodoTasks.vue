@@ -1,7 +1,7 @@
 <template>
   <div class="todo-tasks-page">
     <div class="new-task-input-wrapper">
-      <input class="new-task-input" v-model.trim="newTaskContent" @keyup.enter="addNewTask" />
+      <input class="new-task-input" v-model.trim="newTaskContent" />
       <button class="new-task-button" @click="addNewTask">Add Task</button>
     </div>
     <TaskList task-list-id="todo" empty-message="Congrats! You've completed all tasks." :tasks="todoItems" />
