@@ -45,6 +45,17 @@ const store = new Vuex.Store({
     [mutationTypes.UPDATE_TASK_LIST](state, { taskListKey, taskList }) {
       state.tasks[taskListKey] = taskList;
     },
+    [mutationTypes.DELETE_TASK_LIST](state, { id }) {
+      let key = state.tasks.todo.findIndex((o) => {
+        return o.id == id
+      })
+
+      if(! key) return 
+
+      state.tasks.todo.splice(key, 1);
+      console.log('Task deleted', key);
+      localStorage.set('todo-tasks', JSON.stringify(state.tasks.todo));
+    },    
   },
   actions: {
     [actionTypes.TOGGLE_TASK_IS_COMPLETED]({ commit }, { taskId, isCompleted }) {
@@ -55,6 +66,9 @@ const store = new Vuex.Store({
     [actionTypes.ADD_NEW_TASK]({ commit }, { taskContent }) {
       commit(mutationTypes.ADD_NEW_TASK_TO_LIST, { taskContent });
     },
+    [actionTypes.DELETE_TASK]({ commit }, { index }) {
+      commit(mutationTypes.DELETE_TASK_LIST, { index });
+    },    
     [actionTypes.LOAD_TASKS_FROM_LOCAL_STORAGE]({ commit }) {
       const todoTasksJson = localStorage.get('todo-tasks');
       const todoList = JSON.parse(todoTasksJson) || [];

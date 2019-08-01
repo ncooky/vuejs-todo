@@ -2,6 +2,7 @@
   <div class="task-item">
     <input class="task-checkbox" type="checkbox" :id="taskIdWithPrefix" :checked="isCompleted" @change="toggleIsCompleted" />
     <label class="task-content" :for="taskIdWithPrefix">{{ taskContent }}</label>
+    <button class="btn-delete" @click="deleteTask(taskId)">delete</button>
   </div>
 </template>
 
@@ -28,6 +29,9 @@ export default {
         isCompleted: this.isCompleted,
       });
     },
+    deleteTask(id){
+      this.$store.dispatch(actionTypes.DELETE_TASK, id);
+    }
   },
 };
 </script>
